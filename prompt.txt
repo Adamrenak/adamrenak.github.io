@@ -1,0 +1,3 @@
+My current website is at https://adamrenak.tech. But it's very basic and lacking. I want to make it more professional and sell my skills better.
+
+Create a new website that is more professional and sell my skills better from scratch. Use basic html, css, and javascript. It will be hosted on github pages, so you can also use Jekyll if useful. 
