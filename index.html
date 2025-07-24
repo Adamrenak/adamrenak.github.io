@@ -13,33 +13,31 @@
       <div class="logo-area">
         <span class="logo-text">Adam Renak</span>
       </div>
+      <div class="nav-center">
+        <nav id="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#how">How I Help</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <i class="fa-solid fa-moon"></i>
-      </button>
-      <nav id="main-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="#how">How I Help</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
   <main>
     <section class="hero">
       <div class="container hero-flex">
         <div class="hero-content">
-          <h1>Unlock Growth. Ditch the Product Headaches.</h1>
-          <p class="hero-sub">You didn’t start your company to manage tech chaos. I turn your vision into reality—so you can focus on what you do best.<br><br>Stop losing sleep over missed launches, confused teams, and wasted spend. Let’s make your product your superpower.</p>
-          <div class="dict-animation"><span id="dictText"></span></div>
-          <a href="#contact" class="cta-btn">Book a Free Discovery Call</a>
+          <h1>Fractional Product Leadership<br>for Startups & Scale-ups</h1>
+          <p class="hero-sub">Turn product chaos into clarity. I help non-technical founders unlock growth, ship faster, and make their product a superpower.<br>Let’s make your vision real.</p>
+          <a href="#contact" class="cta-btn">Book a Discovery Call</a>
         </div>
         <div class="hero-photo">
-          <img src="img/adam.jpg" alt="Adam Renak portrait" class="profile-img">
+          <img src="img/adam.jpg" alt="Adam Renak portrait" class="profile-img" loading="lazy">
         </div>
       </div>
     </section>
@@ -138,45 +136,6 @@
       const navToggle = document.getElementById('nav-toggle');
       const siteHeader = document.getElementById('site-header');
       const nav = document.getElementById('main-nav');
-      const themeToggle = document.getElementById('theme-toggle');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-      // Theme logic
-      function setTheme(mode) {
-        if (mode === 'dark') {
-          document.documentElement.classList.add('dark-mode');
-          document.documentElement.classList.remove('light-mode');
-          themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
-          themeToggle.setAttribute('aria-label', 'Switch to light mode');
-        } else {
-          document.documentElement.classList.remove('dark-mode');
-          document.documentElement.classList.add('light-mode');
-          themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
-          themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-        }
-      }
-      function getStoredTheme() {
-        return localStorage.getItem('theme');
-      }
-      function storeTheme(mode) {
-        localStorage.setItem('theme', mode);
-      }
-      function getPreferredTheme() {
-        const stored = getStoredTheme();
-        if (stored) return stored;
-        return prefersDark.matches ? 'dark' : 'light';
-      }
-      // Init theme
-      setTheme(getPreferredTheme());
-      prefersDark.addEventListener('change', e => {
-        if (!getStoredTheme()) setTheme(e.matches ? 'dark' : 'light');
-      });
-      themeToggle.addEventListener('click', function() {
-        const current = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
-        const next = current === 'dark' ? 'light' : 'dark';
-        setTheme(next);
-        storeTheme(next);
-      });
-      // Nav logic
       navToggle.addEventListener('click', function() {
         const expanded = siteHeader.classList.toggle('nav-open');
         navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
@@ -210,6 +169,33 @@
       }
       window.addEventListener('scroll', highlightNav);
       highlightNav();
+      // Fade/slide-in animation for .how-card and .process-step
+      function animateOnScroll(selector) {
+        const elements = document.querySelectorAll(selector);
+        const observer = new window.IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        elements.forEach(el => observer.observe(el));
+      }
+      animateOnScroll('.how-card');
+      animateOnScroll('.process-step');
+      animateOnScroll('blockquote');
+      animateOnScroll('.contact-form');
+      // Navbar scroll background logic
+      function handleNavScroll() {
+        if (window.scrollY > 40) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', handleNavScroll);
+      handleNavScroll();
     });
   </script>
 </body>
