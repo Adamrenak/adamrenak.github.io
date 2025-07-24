@@ -13,10 +13,13 @@
       <div class="logo-area">
         <span class="logo-text">Adam Renak</span>
       </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <nav id="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#how">How I Help</a></li>
           <li><a href="#process">Process</a></li>
@@ -134,42 +137,79 @@
     document.addEventListener('DOMContentLoaded', function() {
       const navToggle = document.getElementById('nav-toggle');
       const siteHeader = document.getElementById('site-header');
-      navToggle.addEventListener('click', function() {
-        siteHeader.classList.toggle('nav-open');
+      const nav = document.getElementById('main-nav');
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      // Theme logic
+      function setTheme(mode) {
+        if (mode === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+          document.documentElement.classList.remove('light-mode');
+          themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+          themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+          document.documentElement.classList.remove('dark-mode');
+          document.documentElement.classList.add('light-mode');
+          themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+          themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+      }
+      function getStoredTheme() {
+        return localStorage.getItem('theme');
+      }
+      function storeTheme(mode) {
+        localStorage.setItem('theme', mode);
+      }
+      function getPreferredTheme() {
+        const stored = getStoredTheme();
+        if (stored) return stored;
+        return prefersDark.matches ? 'dark' : 'light';
+      }
+      // Init theme
+      setTheme(getPreferredTheme());
+      prefersDark.addEventListener('change', e => {
+        if (!getStoredTheme()) setTheme(e.matches ? 'dark' : 'light');
       });
+      themeToggle.addEventListener('click', function() {
+        const current = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        storeTheme(next);
+      });
+      // Nav logic
+      navToggle.addEventListener('click', function() {
+        const expanded = siteHeader.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      });
+      // Collapse menu when a nav link is clicked (mobile)
       const navLinks = siteHeader.querySelectorAll('nav a');
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           if (siteHeader.classList.contains('nav-open')) {
             siteHeader.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
           }
         });
       });
-      // Typewriter dictionary definition animation
-      const dictLines = [
-        "product manager  [ˈprädəkt ˈmanijər]  noun",
-        "1. The strategist who transforms big ideas into market-winning realities.",
-        "2. Translator between vision and engineering, chaos and clarity.",
-        "3. Your secret weapon for shipping products users love."
-      ];
-      const dictElement = document.getElementById('dictText');
-      let line = 0;
-      let char = 0;
-      function typeNext() {
-        if (line < dictLines.length) {
-          if (char < dictLines[line].length) {
-            dictElement.innerHTML += dictLines[line][char];
-            char++;
-            setTimeout(typeNext, 40);
-          } else {
-            dictElement.innerHTML += '<br>';
-            line++;
-            char = 0;
-            setTimeout(typeNext, 400);
-          }
+      // Highlight active section in nav
+      function highlightNav() {
+        const sections = ['how','process','testimonials','contact'];
+        let current = '';
+        const scrollY = window.scrollY + 120;
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) current = id;
         }
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
       }
-      typeNext();
+      window.addEventListener('scroll', highlightNav);
+      highlightNav();
     });
   </script>
 </body>
