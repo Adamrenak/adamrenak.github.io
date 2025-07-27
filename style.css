@@ -160,6 +160,41 @@ nav a:hover {
 }
 @media (max-width: 900px) {
   .nav-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle .bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin: 5px 0;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    position: static;
+  }
+  .site-header.nav-open .nav-toggle .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .site-header.nav-open .nav-toggle .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.7);
+  }
+  .site-header.nav-open .nav-toggle .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .nav-toggle {
     display: block;
   }
   nav {
@@ -775,39 +810,27 @@ blockquote:hover {
   }
 }
 @media (max-width: 600px) {
-  .container {
-    padding: 0 0.7rem;
-    max-width: 100vw;
+  .nav-toggle {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .nav-toggle i {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .hero {
+    padding-top: 4rem;
   }
   .hero-content h1 {
-    font-size: clamp(1.5rem, 6vw, 2.2rem);
-  }
-  .profile-img {
-    width: 100px;
-    height: 100px;
-  }
-  .how-card, .process-step, .contact-form {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    padding: 1rem 0.5rem;
-  }
-  .cta-btn {
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-  }
-  .dict-animation {
-    font-size: 0.9rem;
-  }
-  .theme-toggle {
-    font-size: 1.3rem;
-    padding: 0.4rem 0.6rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.15;
   }
 } 
 .logo-text {
   color: #fff !important;
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
-  text-shadow: 0 4px 24px rgba(0,0,0,0.28), 0 1px 0 #23272F;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 } 
