@@ -673,12 +673,12 @@ blockquote:hover {
   font-size: 1.13rem;
   font-weight: 500;
 }
-.contact-info a {
-  color: #4be1a0;
+.contact-info a:not(.cta-btn) {
+  color: #fff;
   text-decoration: underline;
   transition: color 0.18s;
 }
-.contact-info a:hover {
+.contact-info a:not(.cta-btn):hover {
   color: #ff7a59;
 }
 .contact-form {
