@@ -333,23 +333,42 @@ nav a:hover {
   max-width: 600px;
   animation: fade-in-up 1.2s cubic-bezier(.4,0,.2,1) 0.5s both;
 }
-.cta-btn {
-  background: #ff7a59;
-  color: #181a1b;
-  font-size: 1.25rem;
-  font-weight: 800;
-  padding: 1.3rem 3.2rem;
-  border-radius: 40px;
-  box-shadow: 0 4px 32px rgba(255,122,89,0.13);
-  letter-spacing: 0.03em;
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.13s;
-  animation: fade-in-up 1.2s cubic-bezier(.4,0,.2,1) 0.7s both;
+.cta-btn, a.cta-btn, button.cta-btn {
+  background: #ff7a59 !important;
+  color: #181a1b !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  padding: 1.2rem 2.8rem !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 20px rgba(255,122,89,0.15) !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-family: inherit !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
 }
-.cta-btn:hover, .cta-btn:focus {
-  background: #fff;
-  color: #ff7a59;
-  box-shadow: 0 8px 32px rgba(255,122,89,0.22);
-  transform: translateY(-2px) scale(1.04);
+
+.cta-btn:hover, a.cta-btn:hover, button.cta-btn:hover {
+  background: #fff !important;
+  color: #ff7a59 !important;
+  box-shadow: 0 6px 25px rgba(255,122,89,0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+.cta-btn:active, a.cta-btn:active, button.cta-btn:active {
+  transform: translateY(0) !important;
+  transition: all 0.1s !important;
+}
+
+.cta-btn:focus, a.cta-btn:focus, button.cta-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255,122,89,0.3), 0 6px 25px rgba(255,122,89,0.2) !important;
 }
 .hero-photo {
   flex: 0 0 260px;
@@ -762,6 +781,13 @@ blockquote:hover {
     font-weight: 900;
     line-height: 1.15;
   }
+  .cta-btn {
+    padding: 1.1rem 2.4rem;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
 } 
 .logo-text {
   color: #fff !important;
@@ -769,4 +795,15 @@ blockquote:hover {
   font-weight: 900;
   letter-spacing: 0.04em;
   text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+} 
+/* Reset default anchor styles for CTA buttons */
+a.cta-btn {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ensure consistent button sizing */
+.cta-btn, a.cta-btn, button.cta-btn {
+  box-sizing: border-box;
+  white-space: nowrap;
 } 
