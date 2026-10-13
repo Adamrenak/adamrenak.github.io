@@ -1,298 +1,526 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adam Renak | Fractional Product Leadership</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adam Renak, fractional product and engineering lead, London</title>
+<meta name="description" content="Fractional product and engineering lead in London, for founders who need someone senior on the tech side.">
+<link rel="canonical" href="https://adamrenak.tech/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adamrenak.tech/">
+<meta property="og:title" content="Adam Renak, fractional product and engineering lead">
+<meta property="og:description" content="I run product and engineering until you can.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://adamrenak.tech/#adam",
+      "name": "Adam Renak",
+      "jobTitle": "Fractional product and engineering lead",
+      "url": "https://adamrenak.tech/",
+      "image": "https://adamrenak.tech/img/adam-headshot.jpg",
+      "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+      "sameAs": ["https://www.linkedin.com/in/adamrenak/"],
+      "worksFor": { "@id": "https://adamrenak.tech/#company" },
+      "knowsAbout": ["Product leadership", "System architecture", "Building first engineering teams", "Rapid prototyping", "Securing AI-built software"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://adamrenak.tech/#company",
+      "name": "Adam Builds Tech Ltd",
+      "url": "https://adamrenak.tech/",
+      "founder": { "@id": "https://adamrenak.tech/#adam" },
+      "areaServed": "GB",
+      "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product leadership" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "System architecture" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Your first dev team" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rapid prototypes" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Making AI-built products safe" } }
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #F6F4EF;
+  --ink: #0F1222;
+  --muted: #4A4E63;
+  --faint: #6A6E80;
+  --slot: #E8E9EE;
+  --rule: #D8DAE3;
+  --accent: #2440FF;
+  --btn: #2440FF;
+  --btn-ink: #fff;
+  --gutter: max(24px, 5vw);
+  --col-gap: max(40px, 6vw);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 18px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); text-underline-offset: 5px; text-decoration-thickness: 1px; }
+a:hover { color: var(--muted); }
+button { font: inherit; color: inherit; cursor: pointer; }
+a:focus-visible, button:focus-visible, [tabindex="-1"]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px;
+}
+h1, h2, h3, p { margin: 0; }
+
+.shell { min-height: 100vh; display: flex; flex-direction: column; }
+@media (min-width: 900px) and (min-height: 700px) {
+  .shell { height: 100vh; }
+  main { min-height: 0; overflow: auto; }
+}
+
+.site-header, .site-footer {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 12px 24px; padding: 28px var(--gutter);
+}
+.site-header { justify-content: space-between; }
+.site-footer { justify-content: flex-end; padding-block: 24px; font-size: 14px; color: var(--faint); }
+.site-title {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+}
+.site-title:hover { color: var(--ink); }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; }
+.nav a:not(.nav-home) {
+  font-size: 16px; text-decoration: none; padding: 10px 0;
+  border-bottom: 2px solid transparent;
+}
+.nav a:not(.nav-home)[aria-current="page"] { border-bottom-color: var(--accent); }
+.nav-home {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: none; width: 40px; height: 40px; margin-right: 4px;
+  border: 1.5px solid var(--ink); border-radius: 50%;
+  color: var(--ink); text-decoration: none;
+}
+.nav-home:hover { color: var(--accent); border-color: var(--accent); }
+.nav-home[aria-current="page"] { color: var(--accent); border-color: var(--accent); }
+.nav-home svg { display: block; }
+
+main { flex: 1 1 auto; display: flex; padding: 0 var(--gutter); }
+
+.screen {
+  margin: auto 0; padding: 24px 0; width: 100%;
+  display: flex; flex-wrap: wrap; gap: 40px var(--col-gap);
+}
+.screen[hidden] { display: none; }
+.screen > h2:focus { outline: none; }
+.col-2 { flex: 2 1 320px; min-width: 0; }
+.col-3 { flex: 3 1 480px; min-width: 0; }
+
+.no-js .screen[hidden] { display: flex; }
+
+.home { align-items: center; }
+.headline {
+  font-weight: 600; font-size: clamp(44px, 5.6vw, 88px);
+  line-height: 0.98; letter-spacing: -0.045em; max-width: 12ch;
+}
+.headline em {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+  letter-spacing: -0.02em; color: var(--accent); white-space: nowrap;
+}
+.lead { margin-top: 32px; max-width: 30em; font-size: 20px; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 40px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px;
+  border: 0; border-radius: 999px; background: var(--btn); color: var(--btn-ink);
+  font-weight: 600; text-decoration: none;
+}
+.btn:hover { color: var(--btn-ink); opacity: .88; }
+.link { font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; }
+
+.slot {
+  width: 100%; background: var(--slot); border-radius: 6px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 15px; text-align: center; padding: 16px;
+}
+.slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slot:has(img), .slot:has(video) { padding: 0; }
+.shot { aspect-ratio: unset; max-height: none; align-items: flex-start; }
+.shot:not(:has(img)):not(:has(video)) { aspect-ratio: 16 / 10; max-height: 50vh; }
+.shot img, .shot video {
+  width: 100%; height: auto; max-height: 50vh; display: block;
+  object-fit: contain; object-position: top center; background: var(--slot);
+}
+.portrait img { height: 100%; object-fit: cover; object-position: center 18%; }
+
+.case-carousel { width: 100%; }
+.case-carousel-viewport {
+  overflow: hidden; border-radius: 6px; background: var(--slot);
+  height: min(50vh, 420px);
+}
+.case-carousel-track {
+  display: flex; margin: 0; padding: 0; list-style: none;
+  height: 100%; transition: transform 0.2s ease;
+}
+.case-carousel-slide {
+  flex: 0 0 100%; height: 100%; min-width: 0;
+  display: flex; justify-content: center; align-items: center;
+}
+.case-carousel-slide img {
+  width: 100%; height: 100%; display: block;
+  object-fit: contain; object-position: center center;
+}
+.case-carousel-controls {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin-top: 12px; font-size: 14px; color: var(--muted);
+}
+.case-carousel-controls button {
+  border: 1px solid var(--rule); background: transparent; border-radius: 999px;
+  min-width: 40px; min-height: 40px; cursor: pointer; font: inherit; color: var(--ink);
+}
+.case-carousel-controls button:disabled { opacity: 0.35; cursor: default; }
+.photo {
+  position: relative; flex: 2 1 260px; max-width: 320px; isolation: isolate;
+}
+.photo::before {
+  content: ""; position: absolute; inset: -30% -40%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(36, 64, 255, 0.28), rgba(36, 64, 255, 0));
+}
+.portrait { width: 100%; aspect-ratio: 4 / 5; max-height: 62vh; border-radius: 8px; }
+
+.label { font-size: 16px; font-weight: 500; color: var(--muted); margin-bottom: 20px; }
+.case-list { list-style: none; margin: 0; padding: 0; }
+.case-list li { border-top: 1px solid var(--rule); }
+.case-pick {
+  width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  padding: 16px 0; background: none; border: 0; border-left: 3px solid transparent;
+  text-align: left; opacity: .6; transition: padding .15s, opacity .15s;
+}
+.case-pick[aria-pressed="true"] { opacity: 1; padding-left: 16px; border-left-color: var(--accent); }
+.case-pick .name { font-size: clamp(22px, 2vw, 28px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+.case-pick .kind, .case .kind { font-size: 15px; color: var(--muted); }
+.work .col-2 { display: flex; flex-direction: column; justify-content: center; }
+.work .col-3 { display: flex; flex-direction: column; gap: 20px; }
+.case[hidden] { display: none; }
+.case h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.case p { max-width: 36em; color: var(--ink); margin-top: 20px; }
+.quote-cite { display: inline; text-align: inherit; }
+.quote-link {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0;
+  cursor: pointer; vertical-align: baseline;
+  text-decoration: underline; text-decoration-color: rgba(36, 64, 255, 0.35);
+  text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+a.quote-link { display: inline; }
+a.quote-link:hover { color: var(--ink); }
+.quote-link:hover { text-decoration-color: var(--accent); }
+
+.quote-modal {
+  border: 0; border-radius: 8px; padding: 0; margin: auto;
+  max-width: 40em; width: calc(100% - 48px); background: var(--bg); color: var(--ink);
+}
+.quote-modal::backdrop { background: rgba(15, 18, 34, 0.45); }
+.quote-modal-inner {
+  display: grid; grid-template-columns: 1fr auto; column-gap: 8px;
+  padding: 32px;
+}
+.quote-modal-close {
+  grid-column: 2; grid-row: 1;
+  display: inline-flex; align-items: flex-start; justify-content: center;
+  width: 36px; height: 36px; margin: -6px -8px 0 0; border: 0; padding: 0;
+  background: transparent; color: var(--muted); font-size: 24px; line-height: 1; cursor: pointer;
+}
+.quote-modal-close:hover { color: var(--ink); }
+.quote-modal blockquote {
+  grid-column: 1; grid-row: 1;
+  margin: 0; font-size: 18px; line-height: 1.55;
+}
+.quote-modal cite {
+  grid-column: 1; grid-row: 2;
+  display: block; margin-top: 20px; font-size: 15px; color: var(--muted); font-style: normal;
+}
+.no-js .case[hidden] { display: block; }
+.no-js .case h3 { position: static; width: auto; height: auto; clip: auto; font-size: 24px; margin-top: 32px; }
+.no-js .case-list { display: none; }
+
+.section-title {
+  font-size: clamp(36px, 4vw, 60px); font-weight: 600;
+  line-height: 1.02; letter-spacing: -0.045em; max-width: 9ch;
+}
+.services .lead { margin-top: 20px; max-width: 22em; font-size: 18px; }
+.service-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 48px;
+}
+.service-grid > div { border-top: 1px solid var(--rule); padding-top: 16px; }
+.service-grid h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+.service-grid p { font-size: 17px; color: var(--muted); }
+
+.contact { align-items: flex-start; }
+.contact .headline { font-size: clamp(40px, 5.4vw, 84px); }
+.contact p { max-width: 24em; color: var(--muted); }
+.contact .btn { margin-top: 28px; }
+.contact .more { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 12px; }
+
+@media (max-width: 899px) {
+  .photo { max-width: 300px; }
+  .portrait { max-height: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .screen:not([hidden]) { animation: fade .18s ease-out; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+}
+</style>
 </head>
-<body>
-  <header class="site-header" id="site-header">
-    <div class="container header-flex">
-      <div class="logo-area">
-        <span class="logo-text">Adam Renak</span>
-      </div>
-      <div class="nav-center">
-        <nav id="main-nav" aria-label="Main navigation">
-          <ul>
-            <li><a href="#how">How I Help</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-    </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="container hero-flex">
-        <div class="hero-content">
-          <h1>Fractional<br>Product Leadership<br>for Startups & Scale-ups</h1>
-          <p class="hero-sub">I help non-technical founders make the most of their engineering investment, ship faster and make their technology their superpower.<br>Let’s make your vision real.</p>
-          <button class="cta-btn">Book a Discovery Call</button>
-        </div>
-        <div class="hero-photo">
-          <img src="img/adam.jpg" alt="Adam Renak portrait" class="profile-img" loading="lazy">
-        </div>
-      </div>
-    </section>
-    <section id="how" class="how-section">
-      <div class="container">
-        <h2>How I Help</h2>
-        <div class="how-cards">
-          <div class="how-card">
-            <span class="how-icon" aria-hidden="true">
-              <i class="fa-solid fa-compass"></i>
-            </span>
-            <h3>Turn Confusion into Confidence</h3>
-            <p>No more “lost in translation” between you and your engineers. I make your goals crystal clear - and get your team moving in the right direction.</p>
-          </div>
-          <div class="how-card">
-            <span class="how-icon" aria-hidden="true">
-              <i class="fa-solid fa-clock"></i>
-            </span>
-            <h3>Get Your Time (and Sanity) Back</h3>
-            <p>Imagine focusing on growth, not firefighting. I take ownership of your product roadmap, so you can lead your business, not your backlog.</p>
-          </div>
-          <div class="how-card">
-            <span class="how-icon" aria-hidden="true">
-              <i class="fa-solid fa-rocket"></i>
-            </span>
-            <h3>See Results, Not Just Reports</h3>
-            <p>You want traction, not talk. I'll bring clarity to your organisation and deliver real progress you can see, fast.</p>
-          </div>
-          <div class="how-card">
-            <span class="how-icon" aria-hidden="true">
-              <i class="fa-solid fa-eye"></i>
-            </span>
-            <h3>Clarity at Every Step</h3>
-            <p>No jargon. No surprises. You'll always know what's happening, why, and what's next.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="process" class="process-section">
-      <div class="container">
-        <h2>How It Works</h2>
-        <div class="process-steps">
-          <div class="process-step">
-            <span class="step-number">1</span>
-            <h4>Listen & Diagnose</h4>
-            <p>Tell me where it hurts. I’ll quickly spot what’s holding you back—and what will unlock growth.</p>
-          </div>
-          <div class="process-step">
-            <span class="step-number">2</span>
-            <h4>Action, Not Overwhelm</h4>
-            <p>Get a clear, step-by-step plan. No fluff, no endless slides—just what you need to move forward.</p>
-          </div>
-          <div class="process-step">
-            <span class="step-number">3</span>
-            <h4>Results, Delivered</h4>
-            <p>I roll up my sleeves and make it happen, working with your team to craft a product you can be proud of.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="testimonials" class="testimonials-section">
-      <div class="container">
-        <h2>What Clients Say</h2>
-        <div class="testimonials-grid">
-          <blockquote>"Adam brought clarity to a technical world we were trying to understand. He guided us to launch our flagship networking platform carefully and with a clear plan, built our in-house development capability and educated our team on building a world-class technology product. TRN wouldn't be as strong as it is today without his insight and strong leadership." <span>- Gordon Stoddart, CEO and Co-founder at The Recruitment Network</span></blockquote>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="contact-section">
-      <div class="container contact-flex">
-        <div class="contact-info">
-          <h2>Ready to stop feeling stuck?</h2>
-          <p>Let's talk about how you can finally get the product momentum you deserve.<br><br>No jargon. No pressure. Just a real conversation about your goals and how to get there.</p>
-          <button class="cta-btn">Book a Discovery Call</button>
-          <button class="secondary-btn" onclick="window.location.href='mailto:adam@adamrenak.tech'">Email Me</button>
-          <p>Or connect with me on <a href="https://www.linkedin.com/in/adamrenak/" target="_blank">LinkedIn</a>.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2024 Adam Renak. All rights reserved.</p>
-    </div>
-  </footer>
+<body class="no-js">
+<div class="shell">
 
-  <!-- Booking Modal -->
-  <div id="booking-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal-overlay" id="modal-overlay"></div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modal-title">Book Your Discovery Call</h2>
-        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <!-- Google Calendar Appointment Scheduling begin -->
-        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3C36UCyr_n4tHTYKn9VSYuxcqzrBm2Dre8OhiMKiE_KsSP0Qb5rJ5SWApUVt1Kpo_EnoiaCZHt?gv=true" style="border: 0" width="100%" height="600" frameborder="0" title="Book appointment with Adam Renak"></iframe>
-        <!-- end Google Calendar Appointment Scheduling -->
+<header class="site-header">
+  <a class="site-title" href="#home">Adam Builds Tech</a>
+  <nav class="nav" aria-label="Main">
+    <a class="nav-home" href="#home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z"/>
+      </svg>
+    </a>
+    <a href="#work">Work</a>
+    <a href="#services">What I do</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="screen home" id="home" aria-labelledby="home-title">
+    <div class="col-3">
+      <h1 class="headline" id="home-title" tabindex="-1">I run product and engineering <em>until you can.</em></h1>
+      <p class="lead">Fractional product and engineering lead in London, for founders who need someone senior on the tech side.</p>
+      <div class="actions">
+        <a class="btn" href="#work">See my work</a>
+        <a class="link" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3C36UCyr_n4tHTYKn9VSYuxcqzrBm2Dre8OhiMKiE_KsSP0Qb5rJ5SWApUVt1Kpo_EnoiaCZHt?gv=true" rel="noopener">Book a call</a>
       </div>
     </div>
+    <div class="photo">
+      <div class="slot portrait">
+        <img src="img/adam-headshot.jpg" alt="Adam Renak" width="380" height="475" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <section class="screen work" id="work" aria-labelledby="work-title" hidden>
+    <div class="col-2">
+      <h2 class="label" id="work-title" tabindex="-1">Work</h2>
+      <ul class="case-list">
+        <li><button class="case-pick" type="button" data-case="aimici" aria-pressed="true"><span class="name">AIMICI</span><span class="kind">Fractional product lead</span></button></li>
+        <li><button class="case-pick" type="button" data-case="crossrisk" aria-pressed="false"><span class="name">Crossrisk</span><span class="kind">End-to-end build, ongoing</span></button></li>
+        <li><button class="case-pick" type="button" data-case="loophome" aria-pressed="false"><span class="name">Loop Home</span><span class="kind">Proof of concept</span></button></li>
+        <li><button class="case-pick" type="button" data-case="trn" aria-pressed="false"><span class="name">The Recruitment Network</span><span class="kind">Platform launch and first dev team</span></button></li>
+      </ul>
+    </div>
+    <div class="col-3">
+      <article class="case" id="case-aimici">
+        <h3>AIMICI</h3>
+        <div class="slot shot">
+          <img src="img/aimici-screen.png" alt="Screenshot of the AIMICI product" width="2735" height="1654" loading="eager">
+        </div>
+        <p>Fractional leadership and engineering strategy running development with their overseas engineering team, hands-on when needed, so the founders can focus on the business.</p>
+      </article>
+      <article class="case" id="case-crossrisk" hidden>
+        <h3>Crossrisk</h3>
+        <div class="slot shot">
+          <img src="img/crossrisk-screen.png" alt="Screenshot of the Crossrisk platform" width="3840" height="2160" loading="lazy">
+        </div>
+        <p>Started with the narrowest slice of the problem, tested it with customers to find where the value really was, then built the platform out for launch.</p>
+      </article>
+      <article class="case" id="case-loophome" hidden>
+        <h3>Loop Home</h3>
+        <div class="case-carousel" data-carousel="loop">
+          <div class="case-carousel-viewport">
+            <ul class="case-carousel-track">
+              <li class="case-carousel-slide">
+                <img src="img/loop-chat.png" alt="Loop Home chat marketplace" width="1082" height="2426" loading="lazy">
+              </li>
+              <li class="case-carousel-slide">
+                <img src="img/loop-admin.png" alt="Loop Home admin view" width="3256" height="1828" loading="lazy">
+              </li>
+            </ul>
+          </div>
+          <div class="case-carousel-controls" aria-label="Loop Home screenshots">
+            <button type="button" data-carousel-prev aria-label="Previous screenshot">←</button>
+            <span data-carousel-status aria-live="polite">1 / 2</span>
+            <button type="button" data-carousel-next aria-label="Next screenshot">→</button>
+          </div>
+        </div>
+        <p>A chat-based marketplace for pre-loved furniture on a RAG pipeline. We tested several concepts with real users, refined the idea each round from what they said, and used that to decide what was worth building next.</p>
+      </article>
+      <article class="case" id="case-trn" hidden>
+        <h3>The Recruitment Network</h3>
+        <div class="slot shot">
+          <video src="img/trn-video.mp4" controls playsinline loop muted autoplay preload="metadata" aria-label="Screen recording of the TRN training and professional development portal"></video>
+        </div>
+        <p>Launched their flagship training and professional development portal and built the in-house development team from scratch. <span class="quote-cite"><a href="#" class="quote-link" role="button" aria-haspopup="dialog" aria-controls="trn-quote-modal">“TRN wouldn't be as strong as it is today without his insight and strong leadership.”</a> — Gordon Stoddart, CEO and co-founder.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="screen services" id="services" aria-labelledby="services-title" hidden>
+    <div class="col-2">
+      <h2 class="section-title" id="services-title" tabindex="-1">What I do</h2>
+      <p class="lead">Most engagements mix a few of these. I usually start a few days a month and adjust from there.</p>
+    </div>
+    <div class="col-3 service-grid">
+      <div><h3>Product leadership</h3><p>I own the roadmap, run the sprints and keep the work tied to what the business needs.</p></div>
+      <div><h3>System architecture</h3><p>Choosing the stack and designing a system that holds up when you grow.</p></div>
+      <div><h3>Your first dev team</h3><p>Hiring your first engineers and setting up how they work without me.</p></div>
+      <div><h3>Rapid prototypes</h3><p>Getting an idea in front of real users in weeks, before you spend properly.</p></div>
+      <div><h3>Making AI-built products safe</h3><p>Going through what was built fast with AI tools and fixing what's risky.</p></div>
+    </div>
+  </section>
+
+  <section class="screen contact" id="contact" aria-labelledby="contact-title" hidden>
+    <h2 class="headline col-3" id="contact-title" tabindex="-1">Building something cool?</h2>
+    <div class="col-2">
+      <p>A 30-minute call is the quickest way to find out whether I can help. If I can't, I'll tell you.</p>
+      <a class="btn" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3C36UCyr_n4tHTYKn9VSYuxcqzrBm2Dre8OhiMKiE_KsSP0Qb5rJ5SWApUVt1Kpo_EnoiaCZHt?gv=true" rel="noopener">Book a call</a>
+      <div class="more">
+        <a class="link" href="mailto:adam@adamrenak.tech">adam@adamrenak.tech</a>
+        <a class="link" href="https://www.linkedin.com/in/adamrenak/" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Adam Builds Tech Ltd</span>
+</footer>
+
+<dialog class="quote-modal" id="trn-quote-modal" aria-labelledby="trn-quote-title">
+  <div class="quote-modal-inner">
+    <blockquote id="trn-quote-title">
+      <p>Adam brought clarity to a technical world we were trying to understand. He guided us to launch our flagship networking platform carefully and with a clear plan, built our in-house development capability and educated our team on building a world-class technology product. TRN wouldn't be as strong as it is today without his insight and strong leadership.</p>
+    </blockquote>
+    <button type="button" class="quote-modal-close" aria-label="Close">&times;</button>
+    <cite>Gordon Stoddart, CEO and co-founder, The Recruitment Network</cite>
   </div>
+</dialog>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navToggle = document.getElementById('nav-toggle');
-      const siteHeader = document.getElementById('site-header');
-      const nav = document.getElementById('main-nav');
-      const body = document.body;
-      
-      // Enhanced mobile navigation
-      function openMobileNav() {
-        siteHeader.classList.add('nav-open');
-        navToggle.setAttribute('aria-expanded', 'true');
-        navToggle.setAttribute('aria-label', 'Close navigation');
-        body.style.overflow = 'hidden';
-        body.style.position = 'fixed';
-        body.style.width = '100%';
-      }
-      
-      function closeMobileNav() {
-        siteHeader.classList.remove('nav-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Open navigation');
-        body.style.overflow = '';
-        body.style.position = '';
-        body.style.width = '';
-      }
-      
-      navToggle.addEventListener('click', function() {
-        const isOpen = siteHeader.classList.contains('nav-open');
-        if (isOpen) {
-          closeMobileNav();
-        } else {
-          openMobileNav();
-        }
-      });
-      
-      // Collapse menu when a nav link is clicked (mobile)
-      const navLinks = siteHeader.querySelectorAll('nav a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (siteHeader.classList.contains('nav-open')) {
-            closeMobileNav();
-          }
-        });
-      });
-      
-      // Close menu on escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && siteHeader.classList.contains('nav-open')) {
-          closeMobileNav();
-        }
-      });
-      
-      // Close menu when clicking outside (on the backdrop)
-      const navUl = document.querySelector('nav ul');
-      if (navUl) {
-        navUl.addEventListener('click', function(e) {
-          if (e.target === navUl) {
-            closeMobileNav();
-          }
-        });
-      }
-      // Highlight active section in nav
-      function highlightNav() {
-        const sections = ['how','process','testimonials','contact'];
-        let current = '';
-        const scrollY = window.scrollY + 120;
-        for (const id of sections) {
-          const el = document.getElementById(id);
-          if (el && el.offsetTop <= scrollY) current = id;
-        }
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
-      window.addEventListener('scroll', highlightNav);
-      highlightNav();
-      // Fade/slide-in animation for .how-card and .process-step
-      function animateOnScroll(selector) {
-        const elements = document.querySelectorAll(selector);
-        const observer = new window.IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-        elements.forEach(el => observer.observe(el));
-      }
-      animateOnScroll('.how-card');
-      animateOnScroll('.process-step');
-      animateOnScroll('blockquote');
-      animateOnScroll('.contact-form');
-      // Navbar scroll background logic
-      function handleNavScroll() {
-        if (window.scrollY > 40) {
-          siteHeader.classList.add('scrolled');
-        } else {
-          siteHeader.classList.remove('scrolled');
-        }
-      }
-      window.addEventListener('scroll', handleNavScroll);
-      handleNavScroll();
+</div>
 
-      // Modal functionality
-      const modal = document.getElementById('booking-modal');
-      const modalOverlay = document.getElementById('modal-overlay');
-      const modalClose = document.getElementById('modal-close');
-      const ctaButtons = document.querySelectorAll('.cta-btn');
+<script>
+(function () {
+  document.body.classList.remove('no-js');
 
-      // Open modal function
-      function openModal() {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        modal.setAttribute('aria-hidden', 'false');
-        modalClose.focus();
+  var screens = ['home', 'work', 'services', 'contact'];
+  var navLinks = document.querySelectorAll('.nav a');
+
+  function show(id, moveFocus) {
+    if (screens.indexOf(id) === -1) id = 'home';
+    screens.forEach(function (s) {
+      document.getElementById(s).hidden = (s !== id);
+    });
+    navLinks.forEach(function (a) {
+      if (a.classList.contains('nav-home')) {
+        if (id === 'home') a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
+      } else if (a.getAttribute('href') === '#' + id) {
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.removeAttribute('aria-current');
       }
+    });
+    if (moveFocus) {
+      var heading = document.getElementById(id).querySelector('[tabindex="-1"]');
+      if (heading) heading.focus({ preventScroll: true });
+    }
+  }
 
-      // Close modal function
-      function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        modal.setAttribute('aria-hidden', 'true');
-      }
+  function fromHash(moveFocus) {
+    show(location.hash.replace('#', '') || 'home', moveFocus);
+  }
+  window.addEventListener('hashchange', function () { fromHash(true); });
+  function goHome(e) {
+    e.preventDefault();
+    history.pushState(null, '', location.pathname);
+    show('home', true);
+  }
+  document.querySelector('.nav-home').addEventListener('click', goHome);
+  document.querySelector('.site-title').addEventListener('click', goHome);
+  fromHash(false);
 
-      // Add click event to all CTA buttons
-      ctaButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          openModal();
-        });
-      });
-
-      // Close modal when clicking overlay
-      modalOverlay.addEventListener('click', closeModal);
-
-      // Close modal when clicking close button
-      modalClose.addEventListener('click', closeModal);
-
-      // Close modal when pressing Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-          closeModal();
-        }
+  var picks = document.querySelectorAll('.case-pick');
+  picks.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.getAttribute('data-case');
+      picks.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      document.querySelectorAll('.case').forEach(function (c) {
+        c.hidden = (c.id !== 'case-' + key);
       });
     });
-  </script>
+  });
+
+  var trnQuoteModal = document.getElementById('trn-quote-modal');
+  var trnQuoteBtn = document.querySelector('#case-trn .quote-link');
+  var trnQuoteClose = trnQuoteModal.querySelector('.quote-modal-close');
+  var loopCarousel = document.querySelector('[data-carousel="loop"]');
+  if (loopCarousel) {
+    var loopTrack = loopCarousel.querySelector('.case-carousel-track');
+    var loopSlides = loopCarousel.querySelectorAll('.case-carousel-slide');
+    var loopPrev = loopCarousel.querySelector('[data-carousel-prev]');
+    var loopNext = loopCarousel.querySelector('[data-carousel-next]');
+    var loopStatus = loopCarousel.querySelector('[data-carousel-status]');
+    var loopViewport = loopCarousel.querySelector('.case-carousel-viewport');
+    var loopIndex = 0;
+
+    function syncLoopCarousel() {
+      var w = loopViewport.offsetWidth;
+      loopSlides.forEach(function (slide) {
+        slide.style.flex = '0 0 ' + w + 'px';
+        slide.style.width = w + 'px';
+      });
+      loopTrack.style.transform = 'translateX(-' + (loopIndex * w) + 'px)';
+      if (loopStatus) loopStatus.textContent = (loopIndex + 1) + ' / ' + loopSlides.length;
+      if (loopPrev) loopPrev.disabled = loopIndex === 0;
+      if (loopNext) loopNext.disabled = loopIndex === loopSlides.length - 1;
+    }
+
+    if (loopPrev) {
+      loopPrev.addEventListener('click', function () {
+        if (loopIndex > 0) { loopIndex -= 1; syncLoopCarousel(); }
+      });
+    }
+    if (loopNext) {
+      loopNext.addEventListener('click', function () {
+        if (loopIndex < loopSlides.length - 1) { loopIndex += 1; syncLoopCarousel(); }
+      });
+    }
+    window.addEventListener('resize', syncLoopCarousel);
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () { syncLoopCarousel(); }).observe(loopViewport);
+    }
+    syncLoopCarousel();
+  }
+
+  if (trnQuoteBtn && trnQuoteModal) {
+    trnQuoteBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      trnQuoteModal.showModal();
+    });
+    trnQuoteClose.addEventListener('click', function () { trnQuoteModal.close(); });
+    trnQuoteModal.addEventListener('click', function (e) {
+      if (e.target === trnQuoteModal) trnQuoteModal.close();
+    });
+  }
+})();
+</script>
 </body>
-</html> 
-</html> 
+</html>
