@@ -1,0 +1,25 @@
+# Adam Renak
+
+> Fractional product and engineering lead in London. Adam runs product and engineering for founders and early-stage companies until they can do it themselves. He trades as Adam Builds Tech Ltd.
+
+## What he does
+
+- Product leadership: owns the roadmap, runs the sprints and keeps the work tied to what the business needs.
+- System architecture: chooses the stack and designs a system that holds up as the company grows.
+- Your first dev team: hires the first engineers and sets up how they work.
+- Rapid prototypes: gets an idea in front of real users in weeks.
+- Making AI-built products safe: reviews software built quickly with AI tools and fixes what is risky.
+
+## Work
+
+- AIMICI: fractional leadership and engineering strategy running development with their overseas engineering team.
+- Crossrisk: end-to-end build, ongoing. Started with the narrowest slice of the problem, tested it with customers, then built the platform out for launch.
+- Loop Home: proof of concept for a chat-based marketplace for pre-loved furniture on a RAG pipeline; tested several concepts with real users and refined the proposition from their feedback.
+- The Recruitment Network: launched their flagship training and professional development portal and built the in-house development team from scratch.
+
+## Contact
+
+- Website: https://adamrenak.tech/
+- Book a call: https://calendar.google.com/calendar/appointments/schedules/AcZssZ3C36UCyr_n4tHTYKn9VSYuxcqzrBm2Dre8OhiMKiE_KsSP0Qb5rJ5SWApUVt1Kpo_EnoiaCZHt?gv=true
+- Email: adam@adamrenak.tech
+- LinkedIn: https://www.linkedin.com/in/adamrenak/
